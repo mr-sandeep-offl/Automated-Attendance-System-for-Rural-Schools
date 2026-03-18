@@ -1,0 +1,31 @@
+package com.example.attendanceapp;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.*;
+
+public class DatabaseHelper extends SQLiteOpenHelper {
+
+    public DatabaseHelper(Context context) {
+        super(context, "AttendanceDB", null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE attendance(name TEXT, status TEXT)");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS attendance");
+        onCreate(db);
+    }
+
+    public void insertData(String name, String status) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("name", name);
+        cv.put("status", status);
+        db.insert("attendance", null, cv);
+    }
+}
