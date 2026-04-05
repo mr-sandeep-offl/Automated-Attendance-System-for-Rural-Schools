@@ -1,0 +1,7 @@
+{
+  "name": "Advanced Attendance System",
+  "description": "An offline-first, low-cost automated attendance system for rural Indian schools with multi-language support and dropout risk prediction.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
